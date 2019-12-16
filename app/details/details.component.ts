@@ -1,22 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ActivatedRouteSnapshot } from '@angular/router';
 
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html'
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnInit{
 
   public names: string[] = [];
 
   public name: string;
-
-  constructor(private route: ActivatedRoute, private router: Router, private location: Location) { 
+  public currentRoute: string;
+  constructor(private route: ActivatedRoute,private router: Router, private location: Location) { 
     console.log('[app:details] constructed app details');
+    
   }
 
+  ngOnInit(){
+      this.currentRoute = this.router.url
+  }
   addName(name) {
     this.names.push(name);
   }
