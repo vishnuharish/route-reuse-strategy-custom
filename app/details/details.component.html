@@ -1,0 +1,22 @@
+<h1> Names </h1>
+<p> Change the state of this component and navigate away and come 
+  <a href="" (click)="goBack($event)">back</a>
+</p>
+<pre>{{names | json}}</pre>
+<br>
+<br>
+<div style="width: 30%; padding: 5%">
+<label for="name">Please select the name</label>
+<mat-select id= "name" [(ngModel)]="name" [value]="name">
+  <mat-option selected value="">Please select</mat-option>
+  <mat-option [value]="Test">Test</mat-option>
+  <mat-option [value]="Test1">Test1</mat-option>
+  <mat-option [value]="Test2">Test2</mat-option>
+</mat-select>
+</div>
+<button (click)="addName(name)">
+  add 
+</button>
+
+
+<a [routerLink]="['/secondPage']"> navigate to second page </a>

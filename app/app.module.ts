@@ -42,7 +42,10 @@ import {
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MenuOverviewExample} from './menu-overview-example';
-
+import {routerModule} from './app.routing';
+import {RouteReuseStrategy} from '@angular/router';
+import {CustomRouteReuseStrategy} from './route-reuse-strategy';
+import {DetailsComponent} from './details/details.component';
 @NgModule({
   exports: [
     CdkTableModule,
@@ -92,10 +95,14 @@ export class DemoMaterialModule {}
     DemoMaterialModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    routerModule
   ],
   entryComponents: [MenuOverviewExample],
-  declarations: [MenuOverviewExample],
+  declarations: [MenuOverviewExample, DetailsComponent],
   bootstrap: [MenuOverviewExample],
-  providers: []
+  providers: [{
+    provide: RouteReuseStrategy,
+    useClass: CustomRouteReuseStrategy
+  }]
 })
 export class AppModule {}
